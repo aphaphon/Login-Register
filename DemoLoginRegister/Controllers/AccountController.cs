@@ -94,9 +94,9 @@ namespace DemoLoginRegister.Controllers
 
         //HttpDelete api/account/{id}
         [HttpDelete("{id}")]
-        public DeleteAccountResult DeleteAccount(string id, [FromBody] Account delete)
+        public DeleteAccountResult DeleteAccount(string id)
         {
-            var DeleteAcc = accounts.Where(it => it.Id == delete.Id).FirstOrDefault();
+            var DeleteAcc = accounts.Where(it => it.Id == id).FirstOrDefault();
             accounts.Remove(DeleteAcc);
 
             if (DeleteAcc == null)
