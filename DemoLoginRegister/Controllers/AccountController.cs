@@ -74,9 +74,6 @@ namespace DemoLoginRegister.Controllers
         public EditAccountResult EditAccount([FromBody] Account edit)
         {
             var EditAcc = accounts.FirstOrDefault(it => it.Id == edit.Id);
-            EditAcc.Username = edit.Username;
-            EditAcc.Password = edit.Password;
-
             if (EditAcc == null)
             {
                 return new EditAccountResult
@@ -85,6 +82,9 @@ namespace DemoLoginRegister.Controllers
                     Message = "แก้ไขข้อมูล ไม่สำเร็จ"
                 };
             }
+
+            EditAcc.Username = edit.Username;
+            EditAcc.Password = edit.Password;
             return new EditAccountResult
             {
                 IsSuccess = true,
